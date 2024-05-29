@@ -14,14 +14,13 @@ public class BSTImpl {
      * Inserts a value into the BST using recursion. If the value already exists, it will not be inserted.
      *
      * @param key the value to be inserted
-     * @return true if the value was inserted, false if the value already exists
      */
-    boolean insert(int key) {
+    void insert(int key) {
         if (root == null) {
             root = new TreeNode(key);
-            return true;
+            return;
         }
-        return insertRec(root, key);
+        insertRec(root, key);
     }
 
     /**
@@ -81,7 +80,6 @@ public class BSTImpl {
      * 2. Visit the parent node.
      * 3. Traverse the right subtree.
      *
-     * @param node
      */
     public void inOrderTraverseRecursive(TreeNode node) {
         if (node == null) return;
@@ -102,7 +100,6 @@ public class BSTImpl {
      * 2. Traverse the left subtree.
      * 3. Traverse the right subtree.
      *
-     * @param node
      */
     public void preOrderTraverseRecursive(TreeNode node) {
         if (node == null) return;
@@ -122,7 +119,6 @@ public class BSTImpl {
      * 2. Traverse the right subtree.
      * 3. Visit the parent node.
      *
-     * @param node
      */
     public void postOrderTraverseRecursive(TreeNode node) {
         if (node == null) return;
@@ -216,7 +212,6 @@ public class BSTImpl {
      * 2. If the node doesn't have a right subtree,
      * the successor is determined by traversing the tree from the root until the node is found,
      * updating the successor variable along the way
-     *
      * @param key
      * @return
      */

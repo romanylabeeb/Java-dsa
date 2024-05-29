@@ -40,7 +40,7 @@ public class HeapWrapper {
         return this.size() > 0 && this.size() > in ? this.heap.get(in) : -1;
     }
 
-    public void print(){
+    public void print() {
         this.heap.forEach(System.out::println);
     }
 }
