@@ -25,10 +25,10 @@ public class TrieUsingMap implements ITrie {
     public boolean wordExist(String s) {
         TrieUsingMap current = this;
         for (char c : s.toCharArray()) {
-            if (!current.child.containsKey(c)) {
+            current = current.child.get(c);
+            if (current==null) {
                 return false;
             }
-            current = current.child.get(c);
         }
         return current.isLeaf;
     }
@@ -37,10 +37,10 @@ public class TrieUsingMap implements ITrie {
     public boolean prefixExist(String s) {
         TrieUsingMap current = this;
         for (char c : s.toCharArray()) {
-            if (!current.child.containsKey(c)) {
+            current = current.child.get(c);
+            if (current==null) {
                 return false;
             }
-            current = current.child.get(c);
         }
         return true;
     }

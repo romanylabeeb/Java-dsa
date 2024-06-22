@@ -20,8 +20,8 @@ public class Reverse {
     }
 
     /**
-     *  /**
-     *  * https://leetcode.com/problems/reverse-linked-list/
+     * /**
+     * * https://leetcode.com/problems/reverse-linked-list/
      * 1 -> 2 -> 3
      * split as sub linked list
      *
@@ -38,4 +38,6 @@ public class Reverse {
         head.next = null;
         return newHead;
     }
+
+
 }

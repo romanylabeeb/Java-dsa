@@ -1,4 +1,4 @@
-package dsa.mustafaSaad.designpatteren;
+package dsa.mustafaSaad.designpatteren.observer;
 
 import java.util.ArrayList;
 import java.util.List;

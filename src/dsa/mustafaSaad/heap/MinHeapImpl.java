@@ -1,7 +1,9 @@
 package dsa.mustafaSaad.heap;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MinHeapImpl implements IHeap {
     HeapWrapper heap;
@@ -20,7 +22,7 @@ public class MinHeapImpl implements IHeap {
 
     @Override
     public int pop() {
-        int top=this.heap.front();
+        int top = this.heap.front();
         // get last node value
         int lastNodeVal = this.heap.back();
         // update top node value=lastNodeVal
@@ -94,24 +96,25 @@ public class MinHeapImpl implements IHeap {
         int lSelectIndex = this.left(in);
         if (lSelectIndex == -1) return;
         int rIndex = this.right(in);
-        if (rIndex != -1 && this.get(rIndex)<this.get(lSelectIndex)){
-            lSelectIndex=rIndex;
+        if (rIndex != -1 && this.get(rIndex) < this.get(lSelectIndex)) {
+            lSelectIndex = rIndex;
         }
         // if current value > child then swap and re heap down again
-        if(this.get(in)>this.get(lSelectIndex)){
+        if (this.get(in) > this.get(lSelectIndex)) {
             //swap
-            int cVal=this.get(lSelectIndex);
-            this.set(lSelectIndex,this.get(in));
-            this.set(in,cVal);
+            int cVal = this.get(lSelectIndex);
+            this.set(lSelectIndex, this.get(in));
+            this.set(in, cVal);
             reHeapDown(lSelectIndex);
         }
     }
-    public void  print(){
+
+    public void print() {
         this.heap.print();
     }
 
     public static void main(String[] args) {
-        MinHeapImpl h=new MinHeapImpl();
+        MinHeapImpl h = new MinHeapImpl();
         h.push(3);
         h.push(4);
         h.push(7);
@@ -130,10 +133,36 @@ public class MinHeapImpl implements IHeap {
         h.push(6);
         h.print();
 
-        int v=h.pop();
-        System.out.println("pop value:"+v);
+        int v = h.pop();
+        System.out.println("pop value:" + v);
 
 
         h.print();
+    }
+
+    public int[] topKFrequent(int[] nums, int k) {
+        Map<Integer, Integer> sum = new HashMap();
+        List<List<Integer>> count = new ArrayList(nums.length);
+        for (int i = 0; i < nums.length; i++) {
+            sum.put(nums[i], sum.getOrDefault(nums[i], 0) + 1);
+        }
+
+        //
+        for (Map.Entry<Integer, Integer> entry : sum.entrySet()) {
+            if (count.get(entry.getValue()) == null) {
+                count.add(entry.getValue(), new ArrayList<>());
+            }
+            count.get(entry.getValue()).add(entry.getKey());
+        }
+        int counter = 0;
+        int[] res = new int[k];
+        for (int i = count.size() - 1; i >= 0; i--) {
+            List<Integer> row = count.get(i);
+            int rowIndex = 0;
+            while (counter < k && rowIndex < row.size()) {
+                res[counter++] = row.get(rowIndex++);
+            }
+        }
+        return res;
     }
 }
