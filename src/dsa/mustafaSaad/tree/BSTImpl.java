@@ -3,6 +3,7 @@ package dsa.mustafaSaad.tree;
 import dsa.mustafaSaad.utils.TreeNode;
 
 import java.util.ArrayDeque;
+import java.util.Arrays;
 import java.util.Deque;
 
 public class BSTImpl {
@@ -132,7 +133,11 @@ public class BSTImpl {
         // Visit the parent node
         System.out.print(node.value + " >> ");
     }
+    public void postOrderTraverseUsingWhile(TreeNode node){
+        Deque<TreeNode> stack = new ArrayDeque<>();
 
+
+    }
 
     /**
      *
@@ -373,5 +378,15 @@ public class BSTImpl {
         System.out.println("delete 5");
         bst.delete(5);
         bst.inOrderTraverseUsingWhile();
+    }
+
+    public int solve(int[] A) {
+        Arrays.sort(A);
+        for(int i=0;i<A.length-1;i++){
+            if(A[i]<A[i+1]&&(Math.abs(A[i])==(A.length-1-i))){
+                return 1;
+            }
+        }
+        return -1;
     }
 }

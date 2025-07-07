@@ -7,6 +7,8 @@ import java.util.Map;
 
 
 class TrieNode {
+
+
     Map<Character, TrieNode> nodes;
     boolean isLeaf;
 
@@ -100,6 +102,7 @@ class WordDictionary {
         return cur.isLeaf;
 
     }
+
 }
 /**
  * Your WordDictionary object will be instantiated and called as such:

@@ -15,6 +15,7 @@ public class Reverse {
             p.next = nh;
             nh = p;
             p = nxt;
+
         }
         return nh;
     }
